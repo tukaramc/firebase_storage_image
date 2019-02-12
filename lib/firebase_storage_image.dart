@@ -81,11 +81,13 @@ class FirebaseStorageImage extends ImageProvider<FirebaseStorageImage> {
 
   Future<Codec> _fetch(FirebaseStorageImage key) async {
     final uri = Uri.parse(key.location);
-
+    var pathlist = key.location.split('${uri.scheme}://${uri.authority}');
+    // print("pathlist[0] ********  ${pathlist[0]}");
+    // print("pathlist[1] ********  ${pathlist[1]}");
     final storage = FirebaseStorage(
       app: key._firebaseApp,
       storageBucket: _getBucketUrl(uri),
-    ).ref().child(uri.path);
+    ).ref().child(pathlist[1]);
 
     final bytes = await storage.getData(key.maxSizeBytes);
 
