@@ -52,14 +52,16 @@ class FirebaseStorageImage extends ImageProvider<FirebaseStorageImage> {
 
   @override
   ImageStreamCompleter load(FirebaseStorageImage key) {
+    ///// Here Chetan Commited some line code
     return MultiFrameImageStreamCompleter(
         codec: _fetch(key),
         scale: key.scale,
-        informationCollector: (information) {
-          information
-            ..writeln('Image provider: $this')
-            ..write('Image key: $key');
-        });
+//        informationCollector: (information) {
+//          information
+//            ..writeln('Image provider: $this')
+//            ..write('Image key: $key');
+//        }
+        );
   }
 
   @override
